@@ -6,7 +6,7 @@ import cupy as cp
 import tifffile
 
 n = 256
-nz = 16 # at least 2 
+nz = 256 # at least 2 
 ntheta = 3*n//2
 center = n/2
 
