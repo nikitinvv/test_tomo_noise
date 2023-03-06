@@ -8,8 +8,6 @@ import tifffile
 n = 256
 nz = 256 # at least 2 
 ntheta = 3*n//2
-center = n/2
-
 theta = cp.linspace(0,cp.pi,ntheta,endpoint=True).astype('float32')
 
 # object
@@ -21,7 +19,7 @@ f *= 300 # vary attenuation
 flat = 10000+cp.zeros([nz,1,n],dtype='float32')
 dark = cp.zeros([nz,1,n],dtype='float32')
 
-with FourierRec(n, ntheta, nz, theta, center) as cl:    
+with FourierRec(n, ntheta, nz, theta) as cl:    
     # generate data exp(-Rf)*(flat-dark)+dark   
     data = cp.exp(-cl.fwd(f))*(flat-dark)+dark     
     # apply noise
